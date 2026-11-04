@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
-import '../widgets/profile_photo.dart';
-import '../widgets/profile_info.dart';
+
+// --- DIUBAH: Hapus import widget lama, ganti dengan memanggil 3 widget baru ini ---
+import '../widgets/profile_header.dart';
+import '../widgets/action_buttons.dart';
+import '../widgets/social_media_row.dart';
+// ----------------------------------------------------------------------------------
 
 class ProfileScreen extends StatelessWidget {
   const ProfileScreen({super.key});
@@ -11,45 +15,48 @@ class ProfileScreen extends StatelessWidget {
       appBar: AppBar(
         title: const Text('Profil Mahasiswa'),
         backgroundColor: Colors.blue,
-
-      foregroundColor: Colors.white,
-    ),
-    body: SingleChildScrollView(
-      child: Padding(
-        padding: const EdgeInsets.all(16.0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            const SizedBox(height: 24),
-            const ProfilePhoto(radius: 60),
-            const SizedBox(height: 24),
-            const ProfileInfo(
-              name: 'Mohamad Noval',
-              nim: '25.11.6327',
-              programStudi: 'S1 Informatika',
-              email: 'm.noval@students.amikom.ac.id',
-              lokasi: 'Yogyakarta, Indonesia',
-            ),
-            const SizedBox(height: 24),
-            // Tombol aksi
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-                ElevatedButton.icon(
-                  onPressed: () {},
-                  icon: const Icon(Icons.edit),
-                  label: const Text('Edit'),
-                  ),
-                  ElevatedButton.icon(
-                    onPressed: () {},
-                    icon: const Icon(Icons.share),
-                    label: const Text('Bagikan'),
-                  ),
+        foregroundColor: Colors.white,
+      ),
+      
+      // --- DIUBAH: Dulu langsung SingleChildScrollView, sekarang dibungkus Column ---
+      body: Column( 
+        children: [
+          
+          // --- DITAMBAHKAN: Widget Expanded untuk area atas (Latihan 3) ---
+          Expanded(
+            flex: 3,
+            child: SingleChildScrollView(
+              padding: const EdgeInsets.all(16.0),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: const [
+                  SizedBox(height: 24),
+                  
+                  // --- DIUBAH: Kode foto & info yang panjang diganti jadi 1 baris ini (Latihan 4) ---
+                  ProfileHeader(), 
+                  
+                  SizedBox(height: 24),
+                  
+                  // --- DITAMBAHKAN: Memanggil widget ikon sosmed baru (Latihan 1) ---
+                  SocialMediaRow(), 
                 ],
               ),
-            ],
+            ),
           ),
-        ),
+
+          // --- DITAMBAHKAN: Widget Flexible untuk area tombol di bawah (Latihan 3) ---
+          Flexible(
+            flex: 1,
+            child: Container(
+              padding: const EdgeInsets.all(16.0),
+              alignment: Alignment.center,
+              
+              // --- DIUBAH: Kode Row tombol yang panjang diganti jadi 1 baris ini (Latihan 4) ---
+              child: const ActionButtons(), 
+            ),
+          ),
+          
+        ],
       ),
     );
   }
