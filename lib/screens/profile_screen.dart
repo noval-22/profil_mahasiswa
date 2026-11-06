@@ -29,7 +29,7 @@ class ProfileScreen extends StatelessWidget {
                       // Latihan 4: Widget ProfileHeader
                       ProfileHeader(
                         name: 'Mohamad Noval',
-                        nim: '23.11.0000',
+                        nim: '25.11.6327',
                       ),
                       SizedBox(height: 16),
                       Divider(),
