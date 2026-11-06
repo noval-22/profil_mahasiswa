@@ -9,25 +9,38 @@ class AboutScreen extends StatelessWidget {
       body: Stack(
         alignment: Alignment.center,
         children: [
+          // Background dengan Gradient
           Container(
             decoration: const BoxDecoration(
               gradient: LinearGradient(
-                colors: [Colors.blue, Colors.purple],
-                begin: Alignment.topLeft,
-                end: Alignment.bottomRight,
+                colors: [Colors.blue, Colors.indigo],
+                begin: Alignment.topCenter,
+                end: Alignment.bottomCenter,
               ),
             ),
           ),
+          // Teks di tengah
           const Text(
-            'Tentang Aplikasi',
-            style: TextStyle(fontSize: 24, color: Colors.white, fontWeight: FontWeight.bold),
+            'Tentang Aplikasi\nProfil Mahasiswa v1.0',
+            textAlign: TextAlign.center,
+            style: TextStyle(
+              fontSize: 24,
+              fontWeight: FontWeight.bold,
+              color: Colors.white,
+            ),
           ),
+          // Tombol Kembali di pojok kiri atas
           Positioned(
             top: 40,
             left: 16,
-            child: IconButton(
-              icon: const Icon(Icons.arrow_back, color: Colors.white),
-              onPressed: () => Navigator.pop(context),
+            child: SafeArea(
+              child: CircleAvatar(
+                backgroundColor: Colors.white24,
+                child: IconButton(
+                  icon: const Icon(Icons.arrow_back, color: Colors.white),
+                  onPressed: () => Navigator.pop(context),
+                ),
+              ),
             ),
           ),
         ],

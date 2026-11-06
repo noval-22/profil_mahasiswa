@@ -1,22 +1,37 @@
 import 'package:flutter/material.dart';
 import 'profile_photo.dart';
-import 'profile_info.dart';
 
 class ProfileHeader extends StatelessWidget {
-  const ProfileHeader({super.key});
+  final String name;
+  final String nim;
+
+  const ProfileHeader({
+    super.key,
+    required this.name,
+    required this.nim,
+  });
 
   @override
   Widget build(BuildContext context) {
-    return const Column(
+    return Column(
       children: [
-        ProfilePhoto(radius: 60),
-        SizedBox(height: 24),
-        ProfileInfo(
-          name: 'Nama Mahasiswa',
-          nim: '21.11.0000', 
-          programStudi: 'S1 Informatika',
-          email: 'email@students.amikom.ac.id',
-          lokasi: 'Yogyakarta, Indonesia',
+        const ProfilePhoto(radius: 60),
+        const SizedBox(height: 16),
+        Text(
+          name,
+          style: const TextStyle(
+            fontSize: 24,
+            fontWeight: FontWeight.bold,
+          ),
+          textAlign: TextAlign.center,
+        ),
+        const SizedBox(height: 4),
+        Text(
+          'NIM: $nim',
+          style: const TextStyle(
+            fontSize: 16,
+            color: Colors.grey,
+          ),
         ),
       ],
     );
