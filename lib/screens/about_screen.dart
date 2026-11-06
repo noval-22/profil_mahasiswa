@@ -21,7 +21,7 @@ class AboutScreen extends StatelessWidget {
           ),
           // Teks di tengah
           const Text(
-            'Tentang Aplikasi\nProfil Mahasiswa v1.0',
+            'Tentang Aplikasi',
             textAlign: TextAlign.center,
             style: TextStyle(
               fontSize: 24,
